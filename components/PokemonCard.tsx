@@ -1,5 +1,6 @@
 //import { useState } from "react";
-import { Image, Text, View } from "react-native";
+import { router } from "expo-router";
+import { Image, Pressable, Text } from "react-native";
 
 interface PokemonCardProps {
   name: string;
@@ -18,13 +19,14 @@ export default function PokemonCard(props: PokemonCardProps) {
   // at() Obtiene un elemento del array
 
   return (
-    <View
+    <Pressable
       style={{
         padding: 10,
         borderWidth: 1,
         alignItems: "center",
         borderColor: "green",
       }}
+      onPress={() => router.push(`/pokemon/${props.name}`)}
     >
       <Image
         source={{ uri: PokemonImageUrl }}
@@ -32,6 +34,6 @@ export default function PokemonCard(props: PokemonCardProps) {
       />
       <Text>{props.name}</Text>
       <Text>{props.url}</Text>
-    </View>
+    </Pressable>
   );
 }
